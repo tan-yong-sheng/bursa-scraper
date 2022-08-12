@@ -2,7 +2,7 @@ from operator import sub
 import streamlit as st
 
 def check_update():
-    col1, col2 = st.columns([3,1])
+    _ , col2 = st.columns([3,1])
     last_updated = [date for date in open("./data/last_updated.txt", "r") if date.isalnum()]
 
     if last_updated:
