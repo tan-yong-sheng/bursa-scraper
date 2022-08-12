@@ -31,16 +31,15 @@ scripts.set_input.check_update()
 # main page
 st.markdown("# Bursa Stock Scraper")
 
-with st.sidebar.form("input form"):
-  rf: float = st.number_input(value=4.00, step= 0.05, label="Risk free rate (%): ")# 0.04 # risk free rate
-  period: int = st.number_input(value = 5, min_value=0, max_value=10, label="Valid period: 1-10") # 5 # e.g. 5 = 5 years
-  interval: str = st.text_input(value = "1wk", label="Valid interval: 1d,1wk,1mo,3mo") #"1wk"
-  confidence_level: float = st.number_input(value = 0.05, min_value=0.01, max_value = 0.1, label="Confidence level of linear regression: ")
-  include_dividends: bool = False #: bool = st.checkbox(value=False, label="Whether to consider dividend into stock returns when calculating beta?")
-  exclude_warrant: bool = st.checkbox(value=True, label="Exclude warrant from Bursa stocks.")
-  skipna: bool = False # st.checkbox(value=False, label="Skip NaN values for annualized return & standard deviation.")#False # skip NaN values for annualized return & annualized standard deviation  
-  
-  submitted = st.form_submit_button("Submit")
+with st.form("input form"):
+    rf: float = st.number_input(value=0.04, label="Risk free rate: ")# 0.04 # risk free rate
+    period: int = st.number_input(value = 5, min_value=1, max_value=10, label="Valid period: 1-10 Year") # 5 # e.g. 5 = 5 years
+    interval: str = st.selectbox(options = ["1d","1wk","1mo","3mo"],index=1, label="Valid interval: 1d,1wk,1mo,3mo") #"1wk"
+    confidence_level: float = st.selectbox(options=[0.1, 0.05, 0.01, 0.001], index=1, label="Confidence level of linear regression: ")
+    include_dividends: bool = False #: bool = st.checkbox(value=False, label="Whether to consider dividend into stock returns when calculating beta?")
+    exclude_warrant: bool = st.checkbox(value=True, label="Exclude warrant from Bursa stocks.")
+    skipna: bool = False # st.checkbox(value=False, label="Skip NaN values for annualized return & standard deviation.")#False # skip NaN values for annualized return & annualized standard deviation  
+    submitted: bool = st.form_submit_button("Submit")
 
 if not submitted:
   scripts.set_dataframe.display_data()
