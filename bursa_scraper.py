@@ -12,7 +12,6 @@ import scripts
 import streamlit as st
 import requests, yfinance
 import time
-import json
 import re
 import threading
 from typing import Union, List, Dict, Tuple
