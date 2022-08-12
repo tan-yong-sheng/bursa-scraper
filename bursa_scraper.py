@@ -48,35 +48,8 @@ with st.sidebar.form("input form"):
   submitted = st.form_submit_button("Submit")
 
 if not submitted:
-  try: 
-    df_bursa_companies = pandas.read_csv("./data/bursa_companies.csv")
-    df_sector_overview = pandas.read_csv("./data/sector_overview.csv")
-    df_subsector_overview = pandas.read_csv("./data/subsector_overview.csv")
+  scripts.set_dataframe.display_data()
   
-    with st.container():
-      col1, col2 = st.columns([2,1])
-      col1.markdown("## Bursa Companies")
-      col2.download_button(label="Download full data", data = df_bursa_companies.iloc[:,1:].to_csv().encode("utf-8"),file_name="bursa_companies.csv")
-      st.dataframe(df_bursa_companies.iloc[:,1:].head(10))
-      st.markdown("---")
-          
-    with st.container():
-      col1, col2 = st.columns([2,1])
-      col1.markdown("## Sector Overview")
-      col2.download_button(label="Download full data", data = df_sector_overview.to_csv().encode("utf-8"), file_name="sector_overview.csv")
-      st.dataframe(df_sector_overview.head(10))
-      st.markdown("---")
-      
-    with st.container():
-      col1, col2 = st.columns([2,1])
-      col1.markdown("## Sub-sector overview")
-      col2.download_button(label="Download full data", data = df_subsector_overview.to_csv().encode("utf-8"), file_name="subsector_overview.csv")
-      st.dataframe(df_subsector_overview.head(10))
-      st.markdown("---")
-      
-  except FileNotFoundError:
-    pass
-
 if submitted:
   st.write("Please kindly wait 30 minutes for the results!")
   ## Retrieve Data & Data Cleaning
