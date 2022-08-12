@@ -26,12 +26,7 @@ st.set_page_config(layout="wide")
 no_of_threads: int = 300
 
 # sidebar
-last_updated = [date for date in open("./data/last_updated.txt", "r")]
-
-if len(last_updated) !=0:
-  st.write(f"Last Updated on {last_updated[0]}")
-else:
-  st.write(f"Haven't updated yet.")
+scripts.set_input.check_update()
 
 # main page
 st.markdown("# Bursa Stock Scraper")
