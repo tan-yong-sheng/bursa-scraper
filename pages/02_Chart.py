@@ -16,12 +16,12 @@ def display_chart(bursa_companies_csv:str, sector_overview_csv:str, subsector_ov
     st.markdown("See original project [here](https://colab.research.google.com/gist/tys203831/75c60c26862d53adafe01b7ddd7fda3b/bursa-scraper.ipynb)")
     last_updated = scripts.set_dataframe.check_update(csvdir)
     st.markdown("## Bursa Companies - Excess Returns vs Standara Deviation")
-    plot_fig(df=bursa_companies_df, period=period, normalize=True, legend="SECTOR", 
+    plot_fig(df=bursa_companies_df, normalize=True, legend="SECTOR", 
                        x=f"annualized_standard_deviation_of_equity_{int(period)}Y",
                        y=f"annualized_excess_return_of_equity_{int(period)}Y")
     
     st.markdown("## Bursa Companies - Excess Returns vs Beta")
-    plot_fig(df=bursa_companies_df, period=period, normalize=True, legend="SECTOR", 
+    plot_fig(df=bursa_companies_df, normalize=True, legend="SECTOR", 
                        x=f"BETA_{int(period)}Y",
                        y=f"annualized_excess_return_of_equity_{int(period)}Y")
 
