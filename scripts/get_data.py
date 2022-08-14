@@ -44,7 +44,7 @@ def getStockOverview():
     # data cleaning for this stock ticker table, e.g., drop unwanted columns and reordering them
     clean_df_stock_list = df_stock_list.drop([0,1,8,11], axis=1) # drop unwanted columns
     clean_df_stock_list = clean_df_stock_list[[12,13,10,14,9, 2,3,4,5,6,7]] # reordering the columns
-    clean_df_stock_list.columns = ["STOCK SYMBOL","STOCK CODE","SECTOR","SUBSECTOR", "MKT", "OPEN","LAST","CHG%","CHG","VOL","MKT CAP"] #rename the columns
+    clean_df_stock_list.columns = ["STOCK_SYMBOL","STOCK CODE","SECTOR","SUBSECTOR", "MKT", "OPEN","LAST","CHG%","CHG","VOL","MKT CAP"] #rename the columns
 
     clean_df_stock_list[["OPEN","LAST","CHG%","CHG","VOL","MKT CAP"]] \
     = clean_df_stock_list[["OPEN","LAST","CHG%","CHG","VOL","MKT CAP"]].replace(

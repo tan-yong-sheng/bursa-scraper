@@ -11,7 +11,7 @@ import sidebar
 import streamlit as st
 
 # setup environment
-st.set_page_config(layout="centered")
+st.set_page_config(layout="wide")
 
 # main page
 st.markdown("# Bursa Stock Scraper")
@@ -22,6 +22,7 @@ rf,period,interval,confidence_level,include_dividends,exclude_warrant,skipna,sub
 st.markdown("See original project [here](https://colab.research.google.com/gist/tys203831/75c60c26862d53adafe01b7ddd7fda3b/bursa-scraper.ipynb)")
 
 csvdir = scripts.process_csv.csvDirectory()
+
 
 if updated:
   csvdir = scripts.process_csv.csvDirectory(rf=rf, period=period,interval=interval, 

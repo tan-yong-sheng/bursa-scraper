@@ -27,7 +27,7 @@ def refreshData(csvdir:scripts.process_csv.csvDirectory, rf: float, period:int,i
     #### -- Get beta and alpha using Linear Regression
     # Step 3: calculate beta using Linear Regression
     regression_df = scripts.calc_data.getRegression(total_stock_return_df, period=period, 
-                                                    rf=rf/100, confidence_level=confidence_level/100)
+                                                    rf=rf, confidence_level=confidence_level)
 
     #### -- Calculate Annualized Return and Standard Devation
     # Step 4: Calculate 2Y-Beta, 5Y-Beta and standard deviation of equity to Google Spreadsheet: sheet "Calculated" 

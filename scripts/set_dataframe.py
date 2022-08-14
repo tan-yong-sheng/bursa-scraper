@@ -1,14 +1,14 @@
 import pandas
 import streamlit as st
-import sys, os
-from scripts import process_csv
+import  os
+import scripts 
 import datetime
 from typing import Union
+from scripts import process_csv
 
-def check_update(csvdir: process_csv.csvDirectory) -> st.write:
+def check_update(csvdir: process_csv.csvDirectory):
   try:
     _ , col2 = st.columns([3,2])
-   
     last_updated: str = datetime.datetime.fromtimestamp(os.path.getmtime(csvdir.subsector_overview_csv)).strftime("%d-%m-%Y %H:%M")
     col2.write(f"Last Updated at {last_updated}")
   except FileNotFoundError:
