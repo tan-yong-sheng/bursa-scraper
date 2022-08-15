@@ -20,8 +20,9 @@ rf,period,interval,confidence_level,include_dividends,exclude_warrant,skipna,sub
 
 st.markdown("See original project [here](https://colab.research.google.com/gist/tys203831/75c60c26862d53adafe01b7ddd7fda3b/bursa-scraper.ipynb)")
 
-csvdir = scripts.process_csv.csvDirectory()
-
+csvdir = scripts.process_csv.csvDirectory(rf=rf, period=period,interval=interval, 
+                                          confidence_level=confidence_level, 
+                                          exclude_warrant=exclude_warrant)
 
 if updated:
   csvdir = scripts.process_csv.csvDirectory(rf=rf, period=period,interval=interval, 

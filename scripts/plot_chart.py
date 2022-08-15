@@ -53,7 +53,7 @@ def display_chart(bursa_companies_csv:str, sector_overview_csv:str, subsector_ov
     sector_multiselect = st.multiselect(label="Sectors",
                                         options= [el for el in bursa_companies_df["SECTOR"].dropna().unique() if el in sector_list], 
                                         default=[el for el in bursa_companies_df["SECTOR"].dropna().unique() if el in sector_list])
-    normalized = st.checkbox(value=True, label="Remove Outliers")
+    normalized = st.checkbox(value=False, label="Remove Outliers")
 
     # Plot Excess Returns vs Standard Deviation
     st.markdown("## Bursa Companies - Excess Returns vs Standard Deviation")  
