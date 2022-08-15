@@ -18,7 +18,7 @@ st.markdown("# Bursa Stock Scraper")
 form = st.sidebar.form(key="input form")
 rf,period,interval,confidence_level,include_dividends,exclude_warrant,skipna,submitted,updated = sidebar.sidebar(form)
 
-st.markdown("See original project [here](https://colab.research.google.com/gist/tys203831/75c60c26862d53adafe01b7ddd7fda3b/bursa-scraper.ipynb)")
+st.markdown("See notebook project [here](https://github.com/tys203831/bursa-scraper/blob/main/notebook/Bursa_scraper.ipynb)")
 
 csvdir = scripts.process_csv.csvDirectory(rf=rf, period=period,interval=interval, 
                                           confidence_level=confidence_level, 
