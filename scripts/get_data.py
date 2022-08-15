@@ -58,7 +58,7 @@ def getStockOverview():
     clean_df_stock_list= clean_df_stock_list.apply(pandas.to_numeric, errors="ignore") 
     return clean_df_stock_list.sort_values("MKT CAP",ascending=False)
     
-def getStockTicker(clean_df_stock_list: pandas.core.frame.DataFrame):
+def getStockTicker(clean_df_stock_list: pandas.DataFrame):
     # update stock code list that need to scrape
     stock_list = clean_df_stock_list["STOCK CODE"]
     full_stock_list = ["^KLSE"]

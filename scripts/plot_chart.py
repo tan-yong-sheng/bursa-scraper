@@ -13,15 +13,15 @@ sector_list = ['TECHNOLOGY', 'CONSUMER PRODUCTS & SERVICES', 'PLANTATION',
     '', 'TRANSPORTATION & LOGISTICS', 'ENERGY',
     'REAL ESTATE INVESTMENT TRUSTS', 'TELECOMMUNICATIONS & MEDIA', 'UTILITIES']
 
-def normalize_data(df: pandas.core.frame.DataFrame, x:str, y:str):
+def normalize_data(df: pandas.DataFrame, x:str, y:str):
   x = df[x]; y = df[y]
   df = df[x.between(x.quantile(0.05), x.quantile(0.95)) & y.between(y.quantile(0.05), y.quantile(0.95))]
   return df
 
-def filter_value(df: pandas.core.frame.DataFrame, column: str, unique_val_in_col: list):
+def filter_value(df: pandas.DataFrame, column: str, unique_val_in_col: list):
   return df[df[column].isin(unique_val_in_col)]
 
-def plot_fig(df:pandas.core.frame.DataFrame, x:str, y:str, legend:str, x_label: str, y_label: str, normalized: bool=False, filter_category: Optional[list[str]]=None):
+def plot_fig(df:pandas.DataFrame, x:str, y:str, legend:str, x_label: str, y_label: str, normalized: bool=False, filter_category: Optional[list[str]]=None):
   fig = figure(height=600,width=1000,tools="hover",  toolbar_location="above", 
               x_axis_label=x, y_axis_label=y,
               tooltips=[("STOCK","@STOCK_SYMBOL"),("SUBSECTOR", "@SUBSECTOR"), ("SECTOR", "@SECTOR"),
@@ -45,17 +45,11 @@ def plot_fig(df:pandas.core.frame.DataFrame, x:str, y:str, legend:str, x_label: 
   return fig
 
 
-
 def display_chart(bursa_companies_csv:str, sector_overview_csv:str, subsector_overview_csv:str, period:int, csvdir: scripts.process_csv.csvDirectory):
     bursa_companies_df = pandas.read_csv(bursa_companies_csv)
     sector_overview_df = pandas.read_csv(sector_overview_csv)
     subsector_overview_df = pandas.read_csv(subsector_overview_csv)
-
-    st.markdown("# Bursa Stock Scraper")
-    st.markdown("See original project [here](https://colab.research.google.com/gist/tys203831/75c60c26862d53adafe01b7ddd7fda3b/bursa-scraper.ipynb)")
-    last_updated = scripts.set_dataframe.check_update(csvdir)
     
- 
     sector_multiselect = st.multiselect(label="Sectors",
                                         options= [el for el in bursa_companies_df["SECTOR"].dropna().unique() if el in sector_list], 
                                         default=[el for el in bursa_companies_df["SECTOR"].dropna().unique() if el in sector_list])
@@ -76,5 +70,21 @@ def display_chart(bursa_companies_csv:str, sector_overview_csv:str, subsector_ov
                 x = f"BETA_{int(period)}Y",
                 y=f"annualized_excess_return_of_equity_{int(period)}Y", 
                 filter_category=sector_multiselect, x_label="Beta", 
+                y_label= "Excess Return"
+                ))
+    
+    st.markdown("## Bursa Companies - Excess Returns vs Skewness")
+    st.bokeh_chart(plot_fig(df=bursa_companies_df, normalized=normalized, legend="SECTOR",
+                x = f"SKEWNESS_{int(period)}Y",
+                y=f"annualized_excess_return_of_equity_{int(period)}Y", 
+                filter_category=sector_multiselect, x_label="SKEWNESS", 
+                y_label= "Excess Return"
+                ))
+
+    st.markdown("## Bursa Companies - Excess Returns vs Kurtosis")
+    st.bokeh_chart(plot_fig(df=bursa_companies_df, normalized=normalized, legend="SECTOR",
+                x = f"FISHER_KURTOSIS_{int(period)}Y",
+                y=f"annualized_excess_return_of_equity_{int(period)}Y", 
+                filter_category=sector_multiselect, x_label="FISHER_KURTOSIS", 
                 y_label= "Excess Return"
                 ))

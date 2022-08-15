@@ -6,11 +6,14 @@ import datetime
 from typing import Union
 from scripts import process_csv
 
-def check_update(csvdir: process_csv.csvDirectory):
+def check_update(csvdir: process_csv.csvDirectory, rf: float, period:int, interval: str, confidence_level:str, exclude_warrant: bool):
   try:
-    _ , col2 = st.columns([3,2])
+    col1 , col2 = st.columns([3,2])
     last_updated: str = datetime.datetime.fromtimestamp(os.path.getmtime(csvdir.subsector_overview_csv)).strftime("%d-%m-%Y %H:%M")
+    col1.markdown(f"""Risk free rate: {rf*100}%, Period: {period}, 
+                  Interval: {interval}, Confidence Level: {confidence_level*100}%""")    
     col2.write(f"Last Updated at {last_updated}")
+    
   except FileNotFoundError:
     col2.write("Haven't Updated yet.")
     return col2

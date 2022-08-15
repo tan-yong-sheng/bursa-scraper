@@ -10,8 +10,7 @@ import scripts
 import sidebar
 import streamlit as st
 
-# setup environment
-st.set_page_config(layout="wide")
+
 
 # main page
 st.markdown("# Bursa Stock Scraper")
@@ -28,18 +27,21 @@ if updated:
   csvdir = scripts.process_csv.csvDirectory(rf=rf, period=period,interval=interval, 
                                             confidence_level=confidence_level, 
                                             exclude_warrant=exclude_warrant)
-  
   scripts.refresh_data.refreshData(csvdir, rf=rf, period=period,interval=interval, 
               confidence_level=confidence_level, exclude_warrant=exclude_warrant)
 
 if not submitted:
-  last_updated = scripts.set_dataframe.check_update(csvdir)
+  last_updated = scripts.set_dataframe.check_update(csvdir, rf=rf, period=period,interval=interval, 
+                                            confidence_level=confidence_level, 
+                                            exclude_warrant=exclude_warrant)
   scripts.set_dataframe.display_data(csvdir)
   
 if submitted:
   csvdir = scripts.process_csv.csvDirectory(rf=rf, period=period,interval=interval, 
                                             confidence_level=confidence_level, 
                                             exclude_warrant=exclude_warrant)
-  last_updated = scripts.set_dataframe.check_update(csvdir)
+  last_updated = scripts.set_dataframe.check_update(csvdir, rf=rf, period=period,interval=interval, 
+                                            confidence_level=confidence_level, 
+                                            exclude_warrant=exclude_warrant)
   scripts.set_dataframe.display_data(csvdir)
   
