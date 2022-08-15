@@ -10,7 +10,8 @@ import scripts
 import sidebar
 import streamlit as st
 
-
+# setup environment
+st.set_page_config(layout="wide")
 
 # main page
 st.markdown("# Bursa Stock Scraper")

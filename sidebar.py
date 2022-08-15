@@ -1,8 +1,5 @@
 import streamlit as st
 
-# setup environment
-st.set_page_config(layout="wide")
-
 def sidebar(form: st.form):  
   interval_dict = dict(zip(["1 day","1 week","1 month","3 month"], ["1d","1wk","1mo","3mo"]))
   
