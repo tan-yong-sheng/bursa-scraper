@@ -4,37 +4,28 @@ Bursa Scraper
 
 Demo App here_: 
 
+.. image:: ./images/app_demonstration.gif
+
 .. _here: https://tys203831-bursa-scraper-bursa-scraper-1okr1g.streamlitapp.com/
 
 Introduction
 ----------------
-This is a hobby project and is built for academic application of CAPM model on Bursa stock market.
-In any event, I shall neither be liable for any use of materials and data herein and 
-nor promise the accuracy and completeness of the data.
+This is a hobby project and is built for academic application of CAPM model in 
+Bursa stock market. In any event, the project creator shall neither be liable
+for any use of materials and data herein and nor promise the accuracy 
+and completeness of the data.
 
 Concept of the project
 ------------------------
 This project aims to calculate beta, annualized return (or expected return), 
 and some other performance metrics such as Sharpe ratio, Treynor ratio
-of all Bursa equity using CAPM model as below:"
+of all Bursa equity using CAPM model as below:
 
-.. math:: E(r_i) = r_f + \beta(E(r_m) - r_f)
-
-where:
-
-.. math:: r_i : \,Expected\,return\,of\,the\,equity \\
-.. math:: r_f: \,Risk\,free\,rate \\
-.. math:: \beta: \,Beta\,of\,the\,equity \\
-.. math:: r_m:\,Expected\,market\,return \\
+.. image:: ./images/capm_model.png
 
 Here is how some of the variables calculated in this project:
 
-.. math:: Annualized\,return\,of\,equity: \sqrt[n]{(1+r_i) \times (1+r_i+2) \times \cdots \times (1+r_n)}
-.. math:: Skewness: \frac{1}{N} \sum_{i=1}^{n} \left[ \frac{r_i - \overline{r_i}}{\sigma} \right] ^3
-.. math:: Pearson\,Kurtosis: \frac{1}{N} \sum_{i=1}^{n} \left[ \frac{r_i - \overline{r_i}}{\sigma} \right] ^4
-.. math:: Fisher\,Kurtosis: \frac{1}{N} \sum_{i=1}^{n} \left[ \frac{r_i - \overline{r_i}}{\sigma} \right] ^4 - 3
-.. math:: Sharpe\,ratio: \frac{E(r_m) -r_f}{\sigma}
-.. math:: Treynor\,ratio: \frac{E(r_m) - r_f}{\beta}
+.. image:: ./images/other_calculation.png
 
 You may take reference with below YouTube video to know how to calculate some of the variables above in Excel:
         `Risk-adjusted performance evaluation - Sharpe, Treynor, and Jensen's Alpha (Excel)`_
@@ -80,8 +71,8 @@ be applied in finance or portfolio model.  And this shall be a starter project f
 
 How to deploy this app locally?
 -----------------------------------
-1. Type `git clone https://github.com/tys203831/bursa-scraper.git` into terminal
-2. Go to the project directory, then type `streamlit run bursa_scraper.py` into terminal.
+1. Type `git clone https://github.com/tys203831/bursa-scraper.git` into terminal to download this folder to your directory
+2. Go to this project directory: bursa-scraper, then type `streamlit run bursa_scraper.py` into terminal.
 
 How to deploy this project to Streamlit Cloud?
 ---------------------------------------------------

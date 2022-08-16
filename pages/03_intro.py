@@ -1,9 +1,10 @@
 import streamlit as st
 
 st.markdown("# Introduction")
-st.warning("This is a hobby project and is built for academic reference. In any event, \
-        I shall neither be liable for any use of materials and data herein and \
-        nor promise the accuracy and completeness of the data.")
+st.warning("This is a hobby project and is built for academic application of CAPM model in \
+        Bursa stock market. In any event, the project creator shall neither be liable\
+        for any use of materials and data herein and nor promise the accuracy\
+       and completeness of the data.")
 
 st.markdown("## Concept of the project")
 st.write("This project aims to calculate beta, annualized return (or expected return), \

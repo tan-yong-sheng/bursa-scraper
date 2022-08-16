@@ -55,7 +55,12 @@ def refreshData(csvdir:scripts.process_csv.csvDirectory, rf: float, period:int,i
 
         merged_df = reduce(lambda left, right: pandas.merge(left, right, on="STOCK CODE", how ="left"), main_dataframe)
 
+        # then calculate other performance metrics such as SHARPE RATIO, Treynor Ratio, and Jensen Alpha
+        interval_dict: dict = {"1d": 252,"1wk":52, "1mo":12, "3mo":4}
+        merged_df[f"SHARPE_RATIO_{period}Y"] = merged_df[f"annualized_return_of_equity_{period}Y"].sub((1+rf)**(1/interval_dict[interval]) -1).divide(merged_df[f"annualized_standard_deviation_of_equity_{period}Y"])
+        merged_df[f"TREYNOR_RATIO_{period}Y"] = merged_df[f"annualized_return_of_equity_{period}Y"].sub((1+rf)**(1/interval_dict[interval]) -1).divide(merged_df[f"BETA_{period}Y"])
 
+        
         ## Aggregate Data
         sub_sector_overview_df = merged_df.groupby(["SUBSECTOR", "SECTOR"]).agg({f"BETA_{period}Y": "mean",
                                             f"INTERCEPT_{period}Y": "mean",
