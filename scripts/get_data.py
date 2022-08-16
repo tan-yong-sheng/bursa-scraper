@@ -78,7 +78,7 @@ def getData(ticker_code: Union[str, list], period:str, interval:str) -> pandas.D
 
 def getReturn(df_stock: pandas.DataFrame) -> pandas.DataFrame:
   df_stock["Date"] = pandas.to_datetime(df_stock["Date"])
-  df_stock_return = df_stock.set_index("Date").pct_change()
+  df_stock_return = df_stock.set_index("Date").divide(df_stock.set_index("Date").shift(1)).sub(1) # df["A"].divide(df["A"].shift(1)) -1
   return df_stock_return[1:].reset_index()
 
 def filterDataBasedYear(df, period: int):

@@ -33,7 +33,7 @@ if updated:
                                             confidence_level=confidence_level, 
                                             exclude_warrant=exclude_warrant)
   scripts.refresh_data.refreshData(csvdir, rf=rf, period=period,interval=interval, 
-              confidence_level=confidence_level, exclude_warrant=exclude_warrant)
+              confidence_level=confidence_level, exclude_warrant=exclude_warrant, skipna=skipna)
 
 if not submitted:
   last_updated = scripts.set_dataframe.check_update(csvdir, rf=rf, period=period,interval=interval, 
