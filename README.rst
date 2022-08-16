@@ -2,10 +2,14 @@
 Bursa Scraper
 ==============
 
+Demo App here_: 
+
+.. _here: https://tys203831-bursa-scraper-bursa-scraper-1okr1g.streamlitapp.com/
+
 Introduction
 ----------------
-This is a hobby project and is built for academic reference. In any event, 
-I shall neither be liable for any use of materials and data herein and 
+This is a hobby project and is built for academic application of CAPM model on Bursa stock market.
+In any event, I shall neither be liable for any use of materials and data herein and 
 nor promise the accuracy and completeness of the data.
 
 Concept of the project
@@ -14,27 +18,28 @@ This project aims to calculate beta, annualized return (or expected return),
 and some other performance metrics such as Sharpe ratio, Treynor ratio
 of all Bursa equity using CAPM model as below:"
 
-.. math::
-E(r_i) = r_f + \beta(E(r_m) - r_f)"""
+.. math:: E(r_i) = r_f + \beta(E(r_m) - r_f)
+
 where:
-         \\ r_i : \,Expected\,return\,of\,the\,equity \\
-         r_f: \,Risk\,free\,rate \\
-         \beta: \,Beta\,of\,the\,equity \\
-         r_m:\,Expected\,market\,return \\
+
+.. math:: r_i : \,Expected\,return\,of\,the\,equity \\
+.. math:: r_f: \,Risk\,free\,rate \\
+.. math:: \beta: \,Beta\,of\,the\,equity \\
+.. math:: r_m:\,Expected\,market\,return \\
 
 Here is how some of the variables calculated in this project:
-.. math::
-Annualized\,return\,of\,equity: \sqrt[n]{(1+r_i) \times (1+r_i+2) \times \cdots \times (1+r_n)}
-Skewness: \frac{1}{N} \sum_{i=1}^{n} \left[ \frac{r_i - \overline{r_i}}{\sigma} \right] ^3
-Pearson\,Kurtosis: \frac{1}{N} \sum_{i=1}^{n} \left[ \frac{r_i - \overline{r_i}}{\sigma} \right] ^4
-Fisher\,Kurtosis: \frac{1}{N} \sum_{i=1}^{n} \left[ \frac{r_i - \overline{r_i}}{\sigma} \right] ^4 - 3
-Sharpe\,ratio: \frac{E(r_m) -r_f}{\sigma}
-Treynor\,ratio: \frac{E(r_m) - r_f}{\beta}
+
+.. math:: Annualized\,return\,of\,equity: \sqrt[n]{(1+r_i) \times (1+r_i+2) \times \cdots \times (1+r_n)}
+.. math:: Skewness: \frac{1}{N} \sum_{i=1}^{n} \left[ \frac{r_i - \overline{r_i}}{\sigma} \right] ^3
+.. math:: Pearson\,Kurtosis: \frac{1}{N} \sum_{i=1}^{n} \left[ \frac{r_i - \overline{r_i}}{\sigma} \right] ^4
+.. math:: Fisher\,Kurtosis: \frac{1}{N} \sum_{i=1}^{n} \left[ \frac{r_i - \overline{r_i}}{\sigma} \right] ^4 - 3
+.. math:: Sharpe\,ratio: \frac{E(r_m) -r_f}{\sigma}
+.. math:: Treynor\,ratio: \frac{E(r_m) - r_f}{\beta}
 
 You may take reference with below YouTube video to know how to calculate some of the variables above in Excel:
-        [Risk-adjusted performance evaluation: Sharpe, Treynor, and Jensen's Alpha (Excel)]_.
+        `Risk-adjusted performance evaluation - Sharpe, Treynor, and Jensen's Alpha (Excel)`_
         
-.. _[Risk-adjusted performance evaluation: Sharpe, Treynor, and Jensen's Alpha (Excel)] : (https://www.youtube.com/watch?v=zvChPqsKZjc&t=462s)
+.. _Risk-adjusted performance evaluation - Sharpe, Treynor, and Jensen's Alpha (Excel) : https://www.youtube.com/watch?v=zvChPqsKZjc&t=462s
 
 
 How This Project is Built?
@@ -44,7 +49,9 @@ language, with some libraries installed such as `yfinance` to scrape yahoo finan
 price history, `requests` to fetch stock tickers from i3investor website, `scipy`
 to calculate beta using linear regression plot and  expected return using geometric
 formula. Besides, `pandas` is used to handle, clean and process the data in tabular
-structure and `bokeh` to plot simple [interactive charts](/chart) on this `streamlit` dashboard.
+structure and `bokeh` to plot simple `interactive charts`_ on this `streamlit` dashboard.
+
+.. _interactive charts: https://tys203831-bursa-scraper-bursa-scraper-1okr1g.streamlitapp.com/Chart
 
 Limitations of This Project
 -------------------------------
