@@ -14,7 +14,7 @@ This project aims to calculate beta, annualized return (or expected return),
 and some other performance metrics such as Sharpe ratio, Treynor ratio
 of all Bursa equity using CAPM model as below:"
 
-``math
+``math::
 E(r_i) = r_f + \beta(E(r_m) - r_f)"""
 where:
          \\ r_i : \,Expected\,return\,of\,the\,equity \\
@@ -24,7 +24,7 @@ where:
 ``
 
 Here is how some of the variables calculated in this project:
-``math:
+``math::
 Annualized\,return\,of\,equity: \sqrt[n]{(1+r_i) \times (1+r_i+2) \times \cdots \times (1+r_n)}
 Skewness: \frac{1}{N} \sum_{i=1}^{n} \left[ \frac{r_i - \overline{r_i}}{\sigma} \right] ^3
 Pearson\,Kurtosis: \frac{1}{N} \sum_{i=1}^{n} \left[ \frac{r_i - \overline{r_i}}{\sigma} \right] ^4
