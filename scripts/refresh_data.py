@@ -39,14 +39,14 @@ def refreshData(csvdir:scripts.process_csv.csvDirectory, rf: float, period:int,i
         descriptive_df[f"annualized_standard_deviation_of_equity_{period}Y"] = scripts.calc_data.getAnnualizedStdDeviation(
                                                             scripts.get_data.filterDataBasedYear(total_stock_return_df, period =2) 
                                                             .set_index("Date"), interval=interval, skipna=False)
-        descriptive_df[f"annualized_excess_return_of_equity_{period}Y"] = scripts.calc_data.getAnnualizedReturn( 
+        descriptive_df[f"annualized_return_of_equity_{period}Y"] = scripts.calc_data.getAnnualizedReturn( 
                                                                     scripts.get_data.filterDataBasedYear(total_stock_return_df, period=2)
                                                                     .set_index("Date"), interval=interval, skipna=False, type="geometric")
         descriptive_df = descriptive_df.reset_index()
         descriptive_df = descriptive_df.rename(columns={"index":"STOCK CODE"})
         descriptive_df["STOCK CODE"] = descriptive_df["STOCK CODE"].replace("[.]KL", "", regex=True)
 
-    # descriptive_df.sort_values(f"annualized_excess_return_of_equity_{period}Y", ascending=False)
+    # descriptive_df.sort_values(f"annualized_return_of_equity_{period}Y", ascending=False)
 
     ## Merge All DataFrame
     # merge dataframes of `clean_df_stock_list`, `regression_df`, `descriptive_df`
@@ -59,13 +59,13 @@ def refreshData(csvdir:scripts.process_csv.csvDirectory, rf: float, period:int,i
         ## Aggregate Data
         sub_sector_overview_df = merged_df.groupby(["SUBSECTOR", "SECTOR"]).agg({f"BETA_{period}Y": "mean",
                                             f"INTERCEPT_{period}Y": "mean",
-                                            f"annualized_excess_return_of_equity_{period}Y": "mean", 
+                                            f"annualized_return_of_equity_{period}Y": "mean", 
                                             f"annualized_standard_deviation_of_equity_{period}Y": "mean"
                                             }).dropna()
 
         sector_overview_df = merged_df.groupby("SECTOR").agg({f"BETA_{period}Y": "mean",
                                             f"INTERCEPT_{period}Y": "mean",
-                                            f"annualized_excess_return_of_equity_{period}Y": "mean", 
+                                            f"annualized_return_of_equity_{period}Y": "mean", 
                                             f"annualized_standard_deviation_of_equity_{period}Y": "mean"
                                             }).dropna()
 

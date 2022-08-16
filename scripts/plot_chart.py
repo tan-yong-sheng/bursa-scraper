@@ -55,36 +55,36 @@ def display_chart(bursa_companies_csv:str, sector_overview_csv:str, subsector_ov
                                         default=[el for el in bursa_companies_df["SECTOR"].dropna().unique() if el in sector_list])
     normalized = st.checkbox(value=False, label="Remove Outliers")
 
-    # Plot Excess Returns vs Standard Deviation
-    st.markdown("## Bursa Companies - Excess Returns vs Standard Deviation")  
+    # Plot Returns vs Standard Deviation
+    st.markdown("## Bursa Companies - Annualized Returns vs Standard Deviation")  
     st.bokeh_chart(plot_fig(df=bursa_companies_df, normalized=normalized, legend="SECTOR",
                 x = f"annualized_standard_deviation_of_equity_{int(period)}Y",
-                y=f"annualized_excess_return_of_equity_{int(period)}Y", 
+                y=f"annualized_return_of_equity_{int(period)}Y", 
                 filter_category=sector_multiselect, x_label="Standard Deviation", 
-                y_label= "Excess Return"
+                y_label= "Annualized Return"
                 ))
     
-    # Plot Excess Returns vs Beta
-    st.markdown("## Bursa Companies - Excess Returns vs Beta")
+    # Plot Annualized Returns vs Beta
+    st.markdown("## Bursa Companies - Annualized Returns vs Beta")
     st.bokeh_chart(plot_fig(df=bursa_companies_df, normalized=normalized, legend="SECTOR",
                 x = f"BETA_{int(period)}Y",
-                y=f"annualized_excess_return_of_equity_{int(period)}Y", 
+                y=f"annualized_return_of_equity_{int(period)}Y", 
                 filter_category=sector_multiselect, x_label="Beta", 
-                y_label= "Excess Return"
+                y_label= "Annualized Return"
                 ))
     
-    st.markdown("## Bursa Companies - Excess Returns vs Skewness")
+    st.markdown("## Bursa Companies - Annualized Returns vs Skewness")
     st.bokeh_chart(plot_fig(df=bursa_companies_df, normalized=normalized, legend="SECTOR",
                 x = f"SKEWNESS_{int(period)}Y",
-                y=f"annualized_excess_return_of_equity_{int(period)}Y", 
+                y=f"annualized_return_of_equity_{int(period)}Y", 
                 filter_category=sector_multiselect, x_label="SKEWNESS", 
-                y_label= "Excess Return"
+                y_label= "Annualized Return"
                 ))
 
-    st.markdown("## Bursa Companies - Excess Returns vs Kurtosis")
+    st.markdown("## Bursa Companies - Annualized Returns vs Kurtosis")
     st.bokeh_chart(plot_fig(df=bursa_companies_df, normalized=normalized, legend="SECTOR",
                 x = f"FISHER_KURTOSIS_{int(period)}Y",
-                y=f"annualized_excess_return_of_equity_{int(period)}Y", 
+                y=f"annualized_return_of_equity_{int(period)}Y", 
                 filter_category=sector_multiselect, x_label="FISHER_KURTOSIS", 
-                y_label= "Excess Return"
+                y_label= "Annualized Return"
                 ))
