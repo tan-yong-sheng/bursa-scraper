@@ -22,10 +22,12 @@ and some other performance metrics such as Sharpe ratio, Treynor ratio
 of all Bursa equity using CAPM model as below:
 
 .. image:: ./images/capm_model.png
+        :height: 150px
 
 Here is how some of the variables calculated in this project:
 
 .. image:: ./images/other_calculation.png
+        :height: 200px
 
 You may take reference with below YouTube video to know how to calculate some of the variables above in Excel:
         `Risk-adjusted performance evaluation - Sharpe, Treynor, and Jensen's Alpha (Excel)`_
@@ -71,14 +73,14 @@ be applied in finance or portfolio model.  And this shall be a starter project f
 
 How to deploy this app locally?
 -----------------------------------
-1. Type `git clone https://github.com/tys203831/bursa-scraper.git` into terminal to download this folder to your directory
+1. Type ``git clone https://github.com/tys203831/bursa-scraper.git`` into terminal to download this folder to your directory
 2. Go to this project directory: bursa-scraper, then type `streamlit run bursa_scraper.py` into terminal.
 
 How to deploy this project to Streamlit Cloud?
 ---------------------------------------------------
 1. Sign up a `streamlit cloud account`_.
 2. Go to this `deploy page`_. Click "Paste GitHub URL"
-3. Paste `https://github.com/tys203831/bursa-scraper/blob/main/bursa_scraper.py` to that column
+3. Paste ``https://github.com/tys203831/bursa-scraper/blob/main/bursa_scraper.py`` to that column
 
 .. _streamlit cloud account: https://streamlit.io/cloud
 .. _deploy page: https://share.streamlit.io/deploy
