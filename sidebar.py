@@ -14,6 +14,9 @@ def sidebar(form: st.form):
   col1, col2 = form.columns([1,1]) # button
   submitted: bool = col1.form_submit_button("Submit")
   updated: bool = col2.form_submit_button("Update")
+  form.warning("Please click SUBMIT button to see whether data is downloaded before. If not available, \
+            then click UPDATE button to fetch data from Yahoo Finance. \
+              Hope not to overuse it to avoid getting ban.")
   
   interval = interval_dict[interval] # change human-readable choice to machine readable choice
   return rf,period,interval,confidence_level,include_dividends,exclude_warrant,skipna, submitted, updated

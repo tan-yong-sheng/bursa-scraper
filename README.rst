@@ -78,3 +78,16 @@ I believe data should be easy for people to access for better information decisi
 During degree, I was troubled when picking which stocks or companies with certain criteria to 
 be applied in finance or portfolio model.  And this shall be a starter project for that.
 
+How to deploy this app locally?
+-----------------------------------
+1. Type `git clone https://github.com/tys203831/bursa-scraper.git` into terminal
+2. Go to the project directory, then type `streamlit run bursa_scraper.py` into terminal.
+
+How to deploy this project to Streamlit Cloud?
+---------------------------------------------------
+1. Sign up a `streamlit cloud account`_.
+2. Go to this `deploy page`_. Click "Paste GitHub URL"
+3. Paste `https://github.com/tys203831/bursa-scraper/blob/main/bursa_scraper.py` to that column
+
+.. _streamlit cloud account: https://streamlit.io/cloud
+.. _deploy page: https://share.streamlit.io/deploy
