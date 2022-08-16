@@ -49,19 +49,23 @@ structure and `bokeh` to plot simple `interactive charts`_ on this `streamlit` d
 Limitations of This Project
 -------------------------------
 We could not promise the accuracy of the data due to some technical inabilities. Below are some limitations:
-1. Data Inconsistency
+
+1. **Data Inconsistency**
 We scrape price data from a free website: Yahoo Finance. Thus, the server 
 may return us certain WRONG PRICE variables mixed inside the our
 scraped data if the server found us sending too much requests to get the data
-2. Not using T-bill yield history as risk free rate
+
+2. **Not using T-bill yield history as risk free rate**
 This project assumes the risk free rate input as a CONSTANT risk free rate history yield  
 instead of Malaysian government bond yield. Currently, haven't yet explore website
 that is easy to scrape for this information.
-3. Exclude Dividend in Stock Return & Beta Calculation
+
+3. **Exclude Dividend in Stock Return & Beta Calculation**
 This project does not include dividends when calculating stock return due to 
 server constraints because the scraping process would be very slow if want to scrape dividend
 data of all the bursa tickers.
-4. Potential Calculation Mistake
+
+4. **Potential Calculation Mistake**
 Due to massive data and processes to be handled, I haven't yet cross-checked the calculation 
 and thus honestly, the project is prone to errors. Also, this project uses other python 
 
