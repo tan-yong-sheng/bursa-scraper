@@ -1,6 +1,8 @@
 ==============
 Bursa Scraper
 ==============
+Note: The Project is still under development, so there is still lots of bugs during calculation.
+
 
 Demo App here_: 
 
