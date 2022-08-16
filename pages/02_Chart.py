@@ -11,7 +11,6 @@ data_dirname = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data")
 
 st.markdown("# Bursa Stock Scraper")
 st.markdown("See notebook project [here](https://github.com/tys203831/bursa-scraper/blob/main/notebook/Bursa_scraper.ipynb)")
-st.write("Note: Both the Y-axis and X-axis are in decimal form, and not in percentage form.")
 
 form = st.sidebar.form("input form")
 rf,period,interval,confidence_level,include_dividends,exclude_warrant,skipna,submitted,updated = sidebar.sidebar(form)

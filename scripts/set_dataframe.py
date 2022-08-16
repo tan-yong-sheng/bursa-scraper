@@ -10,7 +10,7 @@ def check_update(csvdir: process_csv.csvDirectory, rf: float, period:int, interv
   try:
     col1 , col2 = st.columns([3,2])
     last_updated: str = datetime.datetime.fromtimestamp(os.path.getmtime(csvdir.subsector_overview_csv)).strftime("%d-%m-%Y %H:%M")
-    col1.markdown(f"""Risk free rate: {rf*100}%, Period: {period}, 
+    col1.info(f"""Risk free rate: {rf*100}%, Period: {period}, 
                   Interval: {interval}, Confidence Level: {confidence_level*100}%""")    
     col2.write(f"Last Updated at {last_updated}")
     

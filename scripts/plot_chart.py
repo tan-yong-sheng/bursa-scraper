@@ -63,6 +63,8 @@ def display_chart(bursa_companies_csv:str, sector_overview_csv:str, subsector_ov
                 filter_category=sector_multiselect, x_label="Standard Deviation", 
                 y_label= "Annualized Return"
                 ))
+    st.info("Note: Both the Y-axis and X-axis are in decimal form, and not in percentage form.")
+
     
     # Plot Annualized Returns vs Beta
     st.markdown("## Bursa Companies - Annualized Returns vs Beta")
@@ -72,6 +74,8 @@ def display_chart(bursa_companies_csv:str, sector_overview_csv:str, subsector_ov
                 filter_category=sector_multiselect, x_label="Beta", 
                 y_label= "Annualized Return"
                 ))
+    st.info("Note: Both the Y-axis and X-axis are in decimal form, and not in percentage form.")
+
     
     st.markdown("## Bursa Companies - Annualized Returns vs Skewness")
     st.bokeh_chart(plot_fig(df=bursa_companies_df, normalized=normalized, legend="SECTOR",
@@ -80,6 +84,8 @@ def display_chart(bursa_companies_csv:str, sector_overview_csv:str, subsector_ov
                 filter_category=sector_multiselect, x_label="SKEWNESS", 
                 y_label= "Annualized Return"
                 ))
+    st.info("Note: Both the Y-axis and X-axis are in decimal form, and not in percentage form.")
+
 
     st.markdown("## Bursa Companies - Annualized Returns vs Kurtosis")
     st.bokeh_chart(plot_fig(df=bursa_companies_df, normalized=normalized, legend="SECTOR",
@@ -88,3 +94,4 @@ def display_chart(bursa_companies_csv:str, sector_overview_csv:str, subsector_ov
                 filter_category=sector_multiselect, x_label="FISHER_KURTOSIS", 
                 y_label= "Annualized Return"
                 ))
+    st.info("Note: Both the Y-axis and X-axis are in decimal form, and not in percentage form.")
