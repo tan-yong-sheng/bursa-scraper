@@ -14,26 +14,28 @@ This project aims to calculate beta, annualized return (or expected return),
 and some other performance metrics such as Sharpe ratio, Treynor ratio
 of all Bursa equity using CAPM model as below:"
 
-``math::
+.. math::
 E(r_i) = r_f + \beta(E(r_m) - r_f)"""
 where:
          \\ r_i : \,Expected\,return\,of\,the\,equity \\
          r_f: \,Risk\,free\,rate \\
          \beta: \,Beta\,of\,the\,equity \\
          r_m:\,Expected\,market\,return \\
-``
 
 Here is how some of the variables calculated in this project:
-``math::
+.. math::
 Annualized\,return\,of\,equity: \sqrt[n]{(1+r_i) \times (1+r_i+2) \times \cdots \times (1+r_n)}
 Skewness: \frac{1}{N} \sum_{i=1}^{n} \left[ \frac{r_i - \overline{r_i}}{\sigma} \right] ^3
 Pearson\,Kurtosis: \frac{1}{N} \sum_{i=1}^{n} \left[ \frac{r_i - \overline{r_i}}{\sigma} \right] ^4
 Fisher\,Kurtosis: \frac{1}{N} \sum_{i=1}^{n} \left[ \frac{r_i - \overline{r_i}}{\sigma} \right] ^4 - 3
 Sharpe\,ratio: \frac{E(r_m) -r_f}{\sigma}
 Treynor\,ratio: \frac{E(r_m) - r_f}{\beta}
+
 You may take reference with below YouTube video to know how to calculate some of the variables above in Excel:
-        [Risk-adjusted performance evaluation: Sharpe, Treynor, and Jensen's Alpha (Excel)](https://www.youtube.com/watch?v=zvChPqsKZjc&t=462s)
-``
+        [Risk-adjusted performance evaluation: Sharpe, Treynor, and Jensen's Alpha (Excel)]_.
+        
+.. _[Risk-adjusted performance evaluation: Sharpe, Treynor, and Jensen's Alpha (Excel)] : (https://www.youtube.com/watch?v=zvChPqsKZjc&t=462s)
+
 
 How This Project is Built?
 -----------------------------
