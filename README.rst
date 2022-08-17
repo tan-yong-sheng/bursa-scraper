@@ -61,8 +61,8 @@ scraped data if the server found us sending too much requests to get the data
 2. **Not using T-bill yield history as risk free rate**
 
 This project assumes the risk free rate input as a CONSTANT risk free rate history yield  
-instead of Malaysian government bond yield. Currently, haven't yet explore website
-that is easy to scrape for this information.
+instead of Malaysian government bond yield. Currently, haven't yet explored the website
+that is easy to be scraped for this kind of information.
 
 3. **Exclude Dividend in Stock Return & Beta Calculation**
 
