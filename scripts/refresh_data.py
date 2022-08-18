@@ -36,12 +36,13 @@ def refreshData(csvdir:scripts.process_csv.csvDirectory, rf: float, period:int,i
         # Step 4: Calculate 2Y-Beta, 5Y-Beta and standard deviation of equity to Google Spreadsheet: sheet "Calculated" 
         x_list = []
         descriptive_df = pandas.DataFrame()
-        descriptive_df[f"annualized_standard_deviation_of_equity_{period}Y"] = scripts.calc_data.getAnnualizedStdDeviation(
-                                                            scripts.get_data.filterDataBasedYear(total_stock_return_df, period =period) 
-                                                            .set_index("Date"), interval=interval, skipna=skipna)
         descriptive_df[f"annualized_return_of_equity_{period}Y"] = scripts.calc_data.getAnnualizedReturn(
                                                                     scripts.get_data.filterDataBasedYear(total_stock_return_df, period=period)
-                                                                    .set_index("Date"), interval=interval, skipna=skipna, calc_type="geometric")
+                                                                    .set_index("Date"), period=period, skipna=skipna, calc_type="geometric")
+        descriptive_df[f"annualized_standard_deviation_of_equity_{period}Y"] = scripts.calc_data.getAnnualizedStdDeviation(
+                                                                                scripts.get_data.filterDataBasedYear(
+                                                                            total_stock_return_df, period =period).set_index("Date"), 
+                                                                                interval=interval, skipna=skipna)
         descriptive_df[f"SKEWNESS_{period}Y"] = scripts.calc_data.getSkewness(scripts.get_data.filterDataBasedYear(total_stock_return_df, 
                                                                     period=period).set_index("Date"))
         descriptive_df[f"PEARSON_KURTOSIS_{period}Y"] = scripts.calc_data.getPearsonKurtosis(scripts.get_data.filterDataBasedYear(total_stock_return_df, 

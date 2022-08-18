@@ -37,7 +37,7 @@ def getRegression(df: pandas.core.frame.DataFrame, period: int, interval:str, rf
   return df_ny
 import math
 
-def getAnnualizedReturn(df:pandas.DataFrame, interval:str, calc_type:str="geometric", skipna:bool=False) -> float:
+def getAnnualizedReturn(df:pandas.DataFrame, period:str, calc_type:str="geometric", skipna:bool=False) -> float:
     """Params:
     interval : str
         Valid intervals: 1d, 1wk,1mo,3mo
@@ -45,11 +45,11 @@ def getAnnualizedReturn(df:pandas.DataFrame, interval:str, calc_type:str="geomet
     annualized_return: float = None
     annualized_return_dict: dict = {"1d": 252,"1wk":52, "1mo":12, "3mo":4}
     if calc_type == "arithmetic":
-        annualized_return: float = df.mean(skipna=skipna) * annualized_return_dict[interval]
+        print("Please use geometric return calc_type!")
     if calc_type == "geometric":
-        annualized_return: float = df.add(1).cumprod(skipna=skipna).iloc[-1] ** (1/annualized_return_dict[interval]) -1
+        annualized_return: float = df.add(1).cumprod(skipna=skipna).iloc[-1] ** (1/period) -1
     return annualized_return
-
+  
 def getAnnualizedStdDeviation(df: pandas.DataFrame, interval:str, skipna:bool) -> float:
     """Params:
     interval : str
