@@ -1,6 +1,4 @@
-
-from statistics import geometric_mean
-from scripts import get_data
+import scripts
 import scipy
 from typing import Tuple, Union
 import logging
@@ -29,7 +27,7 @@ def normality_test(excess_stock_return:list, confidence_level:float) -> Union[bo
 
 def getRegression(df: pandas.core.frame.DataFrame, period: int, interval:str, rf: float, confidence_level: float) -> pandas.core.frame.DataFrame:
   interval_dict = {"1d": 252,"1wk":52, "1mo":12, "3mo":4}
-  df_ny = get_data.filterDataBasedYear(df, period).set_index("Date").sub((1+rf)**(1/interval_dict[interval]) -1)
+  df_ny = scripts.get_data.filterDataBasedYear(df, period).set_index("Date").sub((1+rf)**(1/interval_dict[interval]) -1)
   df_ny = df_ny.apply(lambda x: calc_linregress_data(x.values.tolist(), df_ny["^KLSE"].values.tolist(), confidence_level=confidence_level), axis=0)
   df_ny = df_ny.transpose().reset_index()
   df_ny.columns = ["STOCK CODE",f"BETA_{period}Y", f"INTERCEPT_{period}Y", f"R-SQUARED_{period}Y", f"P-VALUE_{period}Y", f"BETA STANDARD ERROR_{period}Y", f"NORMALITY TEST_{period}Y" ] 
