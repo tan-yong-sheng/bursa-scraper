@@ -92,9 +92,3 @@ def getReturn(df_stock: pandas.DataFrame) -> pandas.DataFrame:
   df_stock["Date"] = pandas.to_datetime(df_stock["Date"])
   df_stock_return = df_stock.set_index("Date").divide(df_stock.set_index("Date").shift(1)).sub(1) # df["A"].divide(df["A"].shift(1)) -1
   return df_stock_return[1:].reset_index()
-
-def filterDataBasedYear(df, period: int):
-  # get stock history of previous n years (e.g. 2 years stock return data out of 5 years)
-  n_years_from_today = datetime.date.today() - dateutil.relativedelta.relativedelta(years=+period)
-  n_years_from_today = n_years_from_today.strftime("%Y-%m-%d")
-  return df[df["Date"]>= n_years_from_today]

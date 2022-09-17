@@ -27,13 +27,13 @@ def create_dataframe(df: pandas, heading: str, file_name:str, key:Union[str,int]
 
 def display_data(csvdir:scripts.process_csv.csvDirectory):
     try: 
-      df_bursa_companies = pandas.read_csv(csvdir.bursa_companies_csv)
-      df_sector_overview = pandas.read_csv(csvdir.sector_overview_csv)
-      df_subsector_overview = pandas.read_csv(csvdir.subsector_overview_csv)
+        df_bursa_companies = pandas.read_csv(csvdir.bursa_companies_csv)
+        df_sector_overview = pandas.read_csv(csvdir.sector_overview_csv)
+        df_subsector_overview = pandas.read_csv(csvdir.subsector_overview_csv)
 
-      create_dataframe(df=df_bursa_companies, heading="Bursa Companies",file_name="bursa_companies", key="bursa_companies")
-      create_dataframe(df=df_subsector_overview, heading="Sub-sector Overview", file_name="subsector_overview", key="subsector_overview")
-      create_dataframe(df=df_sector_overview, heading="Sector Overview", file_name="sector_overview",key="sector_overview")
+        create_dataframe(df=df_bursa_companies.iloc[:,1:], heading="Bursa Companies",file_name="bursa_companies", key="bursa_companies")
+        create_dataframe(df=df_subsector_overview, heading="Sub-sector Overview", file_name="subsector_overview", key="subsector_overview")
+        create_dataframe(df=df_sector_overview, heading="Sector Overview", file_name="sector_overview",key="sector_overview")
         
     except FileNotFoundError:
         st.warning("Please click the UPDATE button to update the data yourself.")

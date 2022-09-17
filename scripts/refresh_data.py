@@ -25,8 +25,8 @@ def refreshData(csvdir:scripts.process_csv.csvDirectory, rf: float, period:int,i
         stock_df = scripts.get_data.getData(ticker_code=full_stock_list, period=str(period)+"y",
                                             interval=interval)
 
-    #with st.spinner("Calculate stock return..."):   
-    total_stock_return_df: pandas = scripts.get_data.getReturn(stock_df)
+    with st.spinner("Calculate stock return..."):   
+        total_stock_return_df: pandas = scripts.get_data.getReturn(stock_df)
 
     #### -- Get beta and alpha using Linear Regression
     # Step 3: calculate beta using Linear Regression

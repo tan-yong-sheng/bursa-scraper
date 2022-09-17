@@ -1,6 +1,7 @@
 import sidebar
 import streamlit as st
 import matplotlib.pyplot as plt
+from scripts.plot_chart import plot_fig
 import pandas
 import os
 import scripts
