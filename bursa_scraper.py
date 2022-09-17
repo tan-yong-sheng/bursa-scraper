@@ -11,6 +11,7 @@ import scripts.set_dataframe
 import scripts.refresh_data
 import sidebar
 import streamlit as st
+import time
 
 # setup environment
 st.set_page_config(layout="wide")
@@ -30,13 +31,6 @@ csvdir = scripts.process_csv.csvDirectory(rf=rf, period=period,interval=interval
                                           confidence_level=confidence_level, 
                                           exclude_warrant=exclude_warrant)
 
-if updated:
-  csvdir = scripts.process_csv.csvDirectory(rf=rf, period=period,interval=interval, 
-                                            confidence_level=confidence_level, 
-                                            exclude_warrant=exclude_warrant)
-  scripts.refresh_data.refreshData(csvdir, rf=rf, period=period,interval=interval, 
-              confidence_level=confidence_level, exclude_warrant=exclude_warrant, skipna=skipna)
-
 if not submitted:
   last_updated = scripts.set_dataframe.check_update(csvdir, rf=rf, period=period,interval=interval, 
                                             confidence_level=confidence_level, 
@@ -51,4 +45,12 @@ if submitted:
                                             confidence_level=confidence_level, 
                                             exclude_warrant=exclude_warrant)
   scripts.set_dataframe.display_data(csvdir)
-  
+
+#if updated:
+while True:
+  csvdir = scripts.process_csv.csvDirectory(rf=rf, period=period,interval=interval, 
+                                            confidence_level=confidence_level, 
+                                            exclude_warrant=exclude_warrant)
+  scripts.refresh_data.refreshData(csvdir, rf=rf, period=period,interval=interval, 
+              confidence_level=confidence_level, exclude_warrant=exclude_warrant, skipna=skipna)
+  time.sleep(43200)

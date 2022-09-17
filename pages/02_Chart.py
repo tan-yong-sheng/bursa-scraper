@@ -26,13 +26,13 @@ try:
                                 confidence_level=confidence_level, 
                                 exclude_warrant=exclude_warrant)
     
-    if updated:
-        csvdir = scripts.process_csv.csvDirectory(rf=rf, period=period,interval=interval, 
-                                confidence_level=confidence_level, 
-                                exclude_warrant=exclude_warrant)
-        scripts.refresh_data.refreshData(csvdir, rf=rf, period=period,interval=interval, 
-                confidence_level=confidence_level, exclude_warrant=exclude_warrant, skipna=skipna)
-
+    #if updated:
+    #    csvdir = scripts.process_csv.csvDirectory(rf=rf, period=period,interval=interval, 
+    #                            confidence_level=confidence_level, 
+    #                            exclude_warrant=exclude_warrant)
+    #    scripts.refresh_data.refreshData(csvdir, rf=rf, period=period,interval=interval, 
+    #            confidence_level=confidence_level, exclude_warrant=exclude_warrant, skipna=skipna)
+        
     if submitted:
         csvdir = scripts.process_csv.csvDirectory(rf=rf, period=period,interval=interval, 
                                         confidence_level=confidence_level, 

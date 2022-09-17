@@ -33,7 +33,6 @@ def getRegression(df: pandas.core.frame.DataFrame, period: int, interval:str, rf
   df_ny.columns = ["STOCK CODE",f"BETA_{period}Y", f"INTERCEPT_{period}Y", f"R-SQUARED_{period}Y", f"P-VALUE_{period}Y", f"BETA STANDARD ERROR_{period}Y", f"NORMALITY TEST_{period}Y" ] 
   df_ny["STOCK CODE"] = df_ny["STOCK CODE"].replace({"[.]KL": ""}, regex=True)
   return df_ny
-import math
 
 def getAnnualizedReturn(df:pandas.DataFrame, period:str, calc_type:str="geometric", skipna:bool=False) -> float:
     """Params:

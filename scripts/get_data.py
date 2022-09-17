@@ -84,7 +84,7 @@ def getData(ticker_code: Union[str, list], period:str, interval:str) -> pandas.D
     ticker_code = " ".join(ticker_code)
   elif isinstance(ticker_code, str) and not ticker_code.endswith(".KL") and not ticker_code.startswith("^"): 
     ticker_code = ticker_code + ".KL"
-  df_stock = yfinance.download(tickers=ticker_code, period=period, interval=interval, group_by="column", proxy=proxy)
+  df_stock = yfinance.download(tickers=ticker_code, period=period, interval=interval, group_by="column", proxy=proxy["http"])
   df_stock = pandas.DataFrame(df_stock["Adj Close"]).fillna(method="ffill", axis=0)
   return df_stock.reset_index()
 
