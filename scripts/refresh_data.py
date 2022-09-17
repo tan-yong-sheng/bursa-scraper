@@ -1,5 +1,7 @@
 import streamlit as st
-import scripts
+import scripts.process_csv
+import scripts.get_data
+import scripts.calc_data
 import pandas
 from functools import reduce
 import re
@@ -37,18 +39,12 @@ def refreshData(csvdir:scripts.process_csv.csvDirectory, rf: float, period:int,i
         x_list = []
         descriptive_df = pandas.DataFrame()
         descriptive_df[f"annualized_return_of_equity_{period}Y"] = scripts.calc_data.getAnnualizedReturn(
-                                                                    scripts.get_data.filterDataBasedYear(total_stock_return_df, period=period)
-                                                                    .set_index("Date"), period=period, skipna=skipna, calc_type="geometric")
+                                                                    total_stock_return_df.set_index("Date"), period=period, skipna=skipna, calc_type="geometric")
         descriptive_df[f"annualized_standard_deviation_of_equity_{period}Y"] = scripts.calc_data.getAnnualizedStdDeviation(
-                                                                                scripts.get_data.filterDataBasedYear(
-                                                                            total_stock_return_df, period =period).set_index("Date"), 
-                                                                                interval=interval, skipna=skipna)
-        descriptive_df[f"SKEWNESS_{period}Y"] = scripts.calc_data.getSkewness(scripts.get_data.filterDataBasedYear(total_stock_return_df, 
-                                                                    period=period).set_index("Date"))
-        descriptive_df[f"PEARSON_KURTOSIS_{period}Y"] = scripts.calc_data.getPearsonKurtosis(scripts.get_data.filterDataBasedYear(total_stock_return_df, 
-                                                                    period=period).set_index("Date"))
-        descriptive_df[f"FISHER_KURTOSIS_{period}Y"] = scripts.calc_data.getFisherKurtosis(scripts.get_data.filterDataBasedYear(total_stock_return_df, 
-                                                                    period=period).set_index("Date"))
+                                                                            total_stock_return_df.set_index("Date"), interval=interval, skipna=skipna)
+        descriptive_df[f"SKEWNESS_{period}Y"] = scripts.calc_data.getSkewness(total_stock_return_df.set_index("Date"))
+        descriptive_df[f"PEARSON_KURTOSIS_{period}Y"] = scripts.calc_data.getPearsonKurtosis(total_stock_return_df.set_index("Date"))
+        descriptive_df[f"FISHER_KURTOSIS_{period}Y"] = scripts.calc_data.getFisherKurtosis(total_stock_return_df.set_index("Date"))
         
         descriptive_df = descriptive_df.reset_index()
         descriptive_df = descriptive_df.rename(columns={"index":"STOCK CODE"})

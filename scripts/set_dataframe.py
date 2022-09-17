@@ -1,11 +1,11 @@
 import pandas
 import streamlit as st
 import  os
-import scripts 
+import scripts.process_csv
 import datetime
 from typing import Union
 
-def check_update(csvdir, rf: float, period:int, interval: str, confidence_level:str, exclude_warrant: bool):
+def check_update(csvdir: scripts.process_csv.csvDirectory, rf: float, period:int, interval: str, confidence_level:str, exclude_warrant: bool):
   try:
     col1 , col2 = st.columns([3,2])
     last_updated: str = datetime.datetime.fromtimestamp(os.path.getmtime(csvdir.subsector_overview_csv)).strftime("%d-%m-%Y %H:%M")
@@ -25,7 +25,7 @@ def create_dataframe(df: pandas, heading: str, file_name:str, key:Union[str,int]
         st.dataframe(df)
         st.markdown("---")
 
-def display_data(csvdir):
+def display_data(csvdir:scripts.process_csv.csvDirectory):
     try: 
       df_bursa_companies = pandas.read_csv(csvdir.bursa_companies_csv)
       df_sector_overview = pandas.read_csv(csvdir.sector_overview_csv)

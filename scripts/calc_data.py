@@ -1,4 +1,4 @@
-import scripts
+import scripts.get_data
 import scipy
 from typing import Tuple, Union
 import logging
@@ -46,6 +46,7 @@ def getAnnualizedReturn(df:pandas.DataFrame, period:str, calc_type:str="geometri
         print("Please use geometric return calc_type!")
     if calc_type == "geometric":
         annualized_return: float = df.add(1).cumprod(skipna=skipna).iloc[-1] ** (1/period) -1
+        print(annualized_return)
     return annualized_return
   
 def getAnnualizedStdDeviation(df: pandas.DataFrame, interval:str, skipna:bool) -> float:
